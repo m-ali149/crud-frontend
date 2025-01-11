@@ -244,15 +244,15 @@ function Edit() {
     }, [fetchUser]);
 
     return (
-        <div>
-            <div className="w-1/2 mx-auto p-4 bg-yellow-200 rounded-lg">
-                <h1 className="text-2xl font-semibold mb-4">Edit User</h1>
+        <div className="flex flex-col items-center min-h-screen bg-gray-100 p-4">
+            <div className="w-full max-w-lg p-6 bg-yellow-200 rounded-lg shadow-lg">
+                <h1 className="text-2xl font-semibold mb-4 text-center">Edit User</h1>
                 <form onSubmit={submitHandler} className="space-y-4">
-                    {/* First Name */}
-                    <label className="flex items-center gap-2">
+                    <label className="flex flex-col">
+                        <span className="mb-1 font-medium">First Name</span>
                         <input
                             type="text"
-                            className="flex-grow p-2 border rounded"
+                            className="p-2 border rounded"
                             placeholder="First name"
                             value={user.firstName}
                             onChange={changeHandler}
@@ -260,12 +260,11 @@ function Edit() {
                             required
                         />
                     </label>
-
-                    {/* Last Name */}
-                    <label className="flex items-center gap-2">
+                    <label className="flex flex-col">
+                        <span className="mb-1 font-medium">Last Name</span>
                         <input
                             type="text"
-                            className="flex-grow p-2 border rounded"
+                            className="p-2 border rounded"
                             placeholder="Last name"
                             value={user.lastName}
                             onChange={changeHandler}
@@ -273,12 +272,11 @@ function Edit() {
                             required
                         />
                     </label>
-
-                    {/* Email */}
-                    <label className="flex items-center gap-2">
+                    <label className="flex flex-col">
+                        <span className="mb-1 font-medium">Email</span>
                         <input
                             type="email"
-                            className="flex-grow p-2 border rounded"
+                            className="p-2 border rounded"
                             placeholder="Email"
                             value={user.email}
                             onChange={changeHandler}
@@ -286,12 +284,11 @@ function Edit() {
                             required
                         />
                     </label>
-
-                    {/* Password */}
-                    <label className="flex items-center gap-2">
+                    <label className="flex flex-col">
+                        <span className="mb-1 font-medium">Password</span>
                         <input
                             type="password"
-                            className="flex-grow p-2 border rounded"
+                            className="p-2 border rounded"
                             placeholder="Password"
                             value={user.password}
                             onChange={changeHandler}
@@ -299,27 +296,27 @@ function Edit() {
                             required
                         />
                     </label>
-
-                    {/* Avatar Upload */}
-                    <label className="flex items-center gap-2">
+                    <label className="flex flex-col">
+                        <span className="mb-1 font-medium">Avatar</span>
                         <input
                             type="file"
                             accept="image/*"
-                            className="flex-grow p-2 border rounded"
+                            className="p-2 border rounded"
                             onChange={handleFileChange}
                             name="avatar"
                         />
                     </label>
-
-                    {/* Submit Button */}
-                    <button className="btn btn-neutral w-full" type="submit">
+                    <button
+                        className="w-full p-2 bg-neutral-600 text-white rounded-lg hover:bg-neutral-800"
+                        type="submit"
+                    >
                         Update
                     </button>
                 </form>
             </div>
-            <div className="w-full mx-auto flex justify-center">
+            <div className="mt-6">
                 <Link to="/">
-                    <button className="bg-green-600 text-white px-5 py-2 border-white border-[2px] rounded-lg mt-6">
+                    <button className="bg-green-600 text-white px-4 py-2 border-white border-[2px] rounded-lg hover:bg-green-700">
                         Show All Users
                     </button>
                 </Link>

@@ -22,42 +22,56 @@ export default function Users() {
     toast.success("User removed");
   }
   return (
-    <div className="bg-yellow-200">
-      <div className="w-full mx-auto flex justify-center">
-        <Link to="/users/create"> <button className="  bg-green-600 text-white px-5 py-2 border-white border-[2px] rounded-lg mt-6"> Add User</button> </Link>
+    <div className="bg-yellow-200 min-h-screen">
+      {/* Add User Button */}
+      <div className="w-full mx-auto flex justify-center py-4">
+        <Link to="/users/create">
+          <button className="bg-green-600 text-white px-5 py-2 border-white border-[2px] rounded-lg hover:bg-green-700">
+            Add User
+          </button>
+        </Link>
       </div>
-      <div className="flex flex-wrap gap-4 w-[90%]  mx-auto pt-14 justify-left">
-        {users.map((mereusers) => {
-          return (
-            <>
-              <div className="card rounded-md bg-slate-300  w-52 h-80" key={mereusers._id}>
-                <figure>
-                  <img src={mereusers.avatar} alt="car!" className="h-52 w-full" />
-                </figure>
-                <div className="card-body">
-                  <h2 className="card-title">{mereusers.firstName}</h2>
-                  <p>{mereusers.lastName}</p>
-                  <div className=" flex space-x-3">
-                    <Link
-                      to={`/user/${mereusers._id}`}
-                      className="btn btn-primary"
-                    >
-                      Edit
-                    </Link>
-                    <button
-                      className="btn btn-error"
-                      onClick={() => deleteUser(mereusers._id)}
-                    >
-                      Remove
-                    </button>
 
-                  </div>
-                </div>
-              </div >
-            </>
-          );
-        })}
+      {/* User Cards */}
+      <div className="flex flex-wrap gap-6 justify-center w-[90%] mx-auto pt-6">
+        {users.map((user) => (
+          <div
+            key={user._id}
+            className="card bg-slate-300 rounded-lg shadow-lg w-60 md:w-72 flex flex-col"
+          >
+            {/* Avatar */}
+            <div className="h-52 w-full overflow-hidden rounded-t-lg">
+              <img
+                src={user.avatar}
+                alt="User Avatar"
+                className="h-full w-full object-cover"
+              />
+            </div>
+
+            {/* Card Content */}
+            <div className="p-4 flex flex-col items-start space-y-2">
+              <h2 className="text-lg font-semibold">{user.firstName}</h2>
+              <p className="text-sm text-gray-700">{user.lastName}</p>
+
+              {/* Action Buttons */}
+              <div className="flex gap-3 mt-2">
+                <Link
+                  to={`/user/${user._id}`}
+                  className="px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600 text-sm"
+                >
+                  Edit
+                </Link>
+                <button
+                  onClick={() => deleteUser(user._id)}
+                  className="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600 text-sm"
+                >
+                  Remove
+                </button>
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
-    </div >
+    </div>
   );
 }
