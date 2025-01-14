@@ -196,7 +196,7 @@ function Edit() {
     // Fetch user data (memoized to prevent unnecessary re-renders)
     const fetchUser = useCallback(async () => {
         try {
-            const response = await axios.get(`http://localhost:5000/user/${id}`);
+            const response = await axios.get(`${process.env.REACT_APP_BACKED_URL}/user/${id}`);
             console.log(response.data);
             setUser(response.data);
         } catch (error) {
@@ -220,7 +220,7 @@ function Edit() {
         }
 
         try {
-            const response = await axios.patch(`http://localhost:5000/users/${id}`, formData, {
+            const response = await axios.patch(`${process.env.REACT_APP_BACKED_URL}/users/${id}`, formData, {
                 headers: {
                     "Content-Type": "multipart/form-data",
                 },
